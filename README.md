@@ -3,7 +3,7 @@
 ## What does it do?
 
 This plugin is designed to do one thing: transfer all module that match a regular expression into a single target chunk.
-This may not sound like much, but coupled with other plugins–especially with the `CommonsChunkPlugin`–it can
+That may not sound like much but coupled with other plugins–especially with the `CommonsChunkPlugin`–it can
 be very useful.
 
 ## Usage
@@ -34,11 +34,12 @@ module.exports = {
 };
 ```
 
-What would happen with this configuration is that all the modules that were `require`'d in the `bundle` chunk whose
-**absolute path** contains the substring `"node_modules"`would be bundled into the `vendor` chunk – and not into the `bundle` chunk.
+What happens with this configuration is that all the modules that were `require`'d in the `bundle` chunk whose
+**absolute path** contains the substring `"node_modules"`would be bundled into the `vendor` chunk – and not into the
+`bundle` chunk where they were originally supposed to be.
 
-The problem that this plugin tries to solve is that while the `CommonsChunkPlugin` works as advertised, it requires that
-you keep an explicit list of modules that you want to be transferred into the vendor bundle. This is both tedious and error prone. 
+The problem with the `CommonsChunkPlugin` plugin is that while it works as advertised, it requires that
+you keep an explicit list of modules that you want to be transferred into the vendor bundle. This can be both tedious and error prone. 
  
 This plugin tries to solve that problem by matching module paths against regular expressions and transferring the matched
 modules to the target chunk (in this case its the `vendor` chunk) before the `CommonsChunkPlugin` has a chance to run.
