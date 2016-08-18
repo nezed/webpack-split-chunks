@@ -1,6 +1,9 @@
 # chunk plugin for webpack
 
-This plugin does something very simple - it transfers modules from some chunks into a separate target chunk.  
+Transfers modules specified chunks into a target chunk.
+
+## What is that good for?
+
 This may not sound like much, but coupled with other plugins–especially with the built-in `CommonsChunkPlugin`–it can
 do something quite nice.
 
