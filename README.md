@@ -1,6 +1,6 @@
 # chunk plugin for webpack
 
-Transfers modules specified chunks into a target chunk.
+Transfers modules from specified chunks into a target chunk.
 
 ## What is that good for?
 
