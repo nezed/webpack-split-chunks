@@ -1,19 +1,16 @@
 {
   "name": "chunk-webpack-plugin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "vendor-webpack-plugin.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/levp/chunk-webpack-plugin.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/levp/chunk-webpack-plugin/issues"
   },
-  "homepage": "https://github.com/levp/chunk-webpack-plugin#readme"
+  "homepage": "https://github.com/levp/chunk-webpack-plugin#readme",
+  "author": "levp",
+  "license": "ISC"
 }
