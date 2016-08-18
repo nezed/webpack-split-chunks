@@ -1,11 +1,10 @@
-# chunk plugin for webpack
+# chunk webpack plugin
 
-Transfers modules from specified chunks into a target chunk.
+## What does it do?
 
-## What is that good for?
-
-This may not sound like much, but coupled with other plugins–especially with the built-in `CommonsChunkPlugin`–it can
-do something quite useful.
+This plugin is designed to do one thing: transfer all module that match a regular expression into a single target chunk.
+This may not sound like much, but coupled with other plugins–especially with the `CommonsChunkPlugin`–it can
+be very useful.
 
 ## Usage
 
