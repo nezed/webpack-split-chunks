@@ -5,7 +5,7 @@ Transfers modules specified chunks into a target chunk.
 ## What is that good for?
 
 This may not sound like much, but coupled with other plugins–especially with the built-in `CommonsChunkPlugin`–it can
-do something quite nice.
+do something quite useful.
 
 ## Usage
 
