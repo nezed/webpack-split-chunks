@@ -1,6 +1,6 @@
 {
   "name": "chunk-webpack-plugin",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Transfers modules from specified chunks into a target chunk",
   "main": "chunk-webpack-plugin.js",
   "repository": {
