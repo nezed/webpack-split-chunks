@@ -2,7 +2,7 @@
 
 ## What does it do?
 
-This plugin is designed to do one thing: transfer all module that match a regular expression into a single target chunk.
+This plugin is designed to do one thing: transfer all modules that match a regular expression into a single target chunk.
 That may not sound like much but coupled with other plugins–especially with the `CommonsChunkPlugin`–it can
 be very useful.
 
