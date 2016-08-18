@@ -2,7 +2,7 @@
   "name": "chunk-webpack-plugin",
   "version": "0.1.0",
   "description": "",
-  "main": "vendor-webpack-plugin.js",
+  "main": "chunk-webpack-plugin.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/levp/chunk-webpack-plugin.git"
