@@ -32,15 +32,15 @@ module.exports = {
 };
 ```
 
-What happens with this configuration is that all the modules that were `require`'d in the `bundle` chunk whose
-**absolute path** contains the substring `"node_modules"`would be bundled into the `vendor` chunk – and not into the
-`bundle` chunk where they were originally supposed to be.
+With this configuration all the modules that were `require`'d in the `bundle` chunk whose **absolute path** contains the
+substring `"node_modules"`would be instead added to the `vendor` chunk – and not into the `bundle` chunk where they
+would otherwise be.
 
-The problem with the `CommonsChunkPlugin` plugin is that while it works as advertised, it requires that
-you keep an explicit list of modules that you want to be transferred into the vendor bundle. This can be both tedious and error prone. 
- 
-This plugin tries to solve that problem by matching module paths against regular expressions and transferring the matched
-modules to the target chunk (in this case its the `vendor` chunk) before the `CommonsChunkPlugin` has a chance to run.
+The issue with using only the `CommonsChunkPlugin` plugin to achieve a 'vendor' chunk is that it requires that you keep 
+an explicit list of modules that you want to be transferred into the vendor bundle.  
+This plugin tries to solve that problem by matching module paths against regular expressions and transferring the
+matched modules to the target chunk (in the case of the configuration about it's the `vendor` chunk) before the
+`CommonsChunkPlugin` has a chance to run.
 
 ## License
 
