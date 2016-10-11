@@ -2,9 +2,8 @@
 
 ## What does it do?
 
-This plugin is designed to do one thing: transfer all modules that match a regular expression into a single target chunk.
-That may not sound like much but coupled with other plugins–especially with the `CommonsChunkPlugin`–it can
-be very useful.
+This plugin transfers modules that match a regular expression from a list of chunks into a single target chunk.
+Coupled with other plugins – especially with webpack's built-in `CommonsChunkPlugin `– this can be very useful.
 
 ## Usage
 
@@ -42,3 +41,7 @@ you keep an explicit list of modules that you want to be transferred into the ve
  
 This plugin tries to solve that problem by matching module paths against regular expressions and transferring the matched
 modules to the target chunk (in this case its the `vendor` chunk) before the `CommonsChunkPlugin` has a chance to run.
+
+## License
+
+[ISC](https://opensource.org/licenses/ISC)
