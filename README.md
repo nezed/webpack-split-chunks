@@ -34,8 +34,13 @@ module.exports = {
 ```
 
 With this configuration all the modules that were `require`'d in the `bundle` chunk whose **absolute path** contains the
-substring `"node_modules"`would be instead added to the `vendor` chunk – and not into the `bundle` chunk where they
+substring `"node_modules"` would be instead added to the `vendor` chunk – and not into the `bundle` chunk where they
 would otherwise be.
+
+### But why?
+
+Using this on external bundles can greatly increase re-build performance for the `bundle` chunk, especially if it
+includes a lot of modules that you have no intention of changing.
 
 The issue with using only the `CommonsChunkPlugin` plugin to achieve a 'vendor' chunk is that it requires that you keep 
 an explicit list of modules that you want to be transferred into the vendor bundle.  
