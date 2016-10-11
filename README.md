@@ -42,11 +42,13 @@ would otherwise be.
 Using this on external bundles can greatly increase re-build performance for the `bundle` chunk, especially if it
 includes a lot of modules that you have no intention of changing.
 
-The issue with using only the `CommonsChunkPlugin` plugin to achieve a 'vendor' chunk is that it requires that you keep 
-an explicit list of modules that you want to be transferred into the vendor bundle.  
+### Note
+
+The issue with using only the `CommonsChunkPlugin` plugin to achieve this behavior is that it requires that you keep 
+an explicit list of modules that you want to be transferred into the the target bundle.  
 This plugin tries to solve that problem by matching module paths against regular expressions and transferring the
 matched modules to the target chunk (in the case of the configuration about it's the `vendor` chunk) before the
-`CommonsChunkPlugin` has a chance to run.
+`CommonsChunkPlugin` has a chance to run, but still letting it do its magic.
 
 ## License
 
