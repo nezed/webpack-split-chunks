@@ -2,8 +2,9 @@
 
 ## What does it do?
 
-This plugin transfers modules that match a regular expression from a list of chunks into a single target chunk.
-Coupled with other plugins – especially with webpack's built-in `CommonsChunkPlugin `– this can be very useful.
+This plugin transfers modules whose absolute path matches a regular expression from a list of chunks into a single
+target chunk. 
+Coupled with other plugins – especially with webpack's built-in `CommonsChunkPlugin `– this can be quite useful.
 
 ## Usage
 
