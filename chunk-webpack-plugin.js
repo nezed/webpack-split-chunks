@@ -1,8 +1,10 @@
 'use strict';
 
+var CommonsChunkPlugin = require('webpack').optimize.CommonsChunkPlugin;
 var util = require('./lib/util');
 var tools = require('./lib/tools');
 
+const base = CommonsChunkPlugin;
 /**
  * Creates a new instance of the plugin.
  * @param options Plugin options.
@@ -13,9 +15,9 @@ var tools = require('./lib/tools');
  * will be copied over to the "target" module.
  * @constructor
  */
-function VendorWebpackPlugin(options) {
+function ChunkWebpackPlugin(options) {
 	// tedious type checking...
-	if (!(this instanceof VendorWebpackPlugin)) throw new Error('Function `VendorWebpackPlugin` is a constructor and must be instantiated with the `new` keyword.');
+	if (!(this instanceof ChunkWebpackPlugin)) throw new Error('Function `ChunkWebpackPlugin` is a constructor and must be instantiated with the `new` keyword.');
 	if (typeof options !== 'object') throw new TypeError('Argument `options` must be an object.');
 	if (!util.typeOrArrayOf(options.from, 'string')) throw new Error('Option `from` must be either a string or an array of strings');
 	if (!util.checkType(options.to, 'string')) throw new Error('Option `to` must be a string.');
@@ -29,7 +31,11 @@ function VendorWebpackPlugin(options) {
 		// yeah, if this happened something is wrong
 		throw new Error('The name of the target ("to") chunk cannot also be in the "from" chunk name list.');
 	}
+
+	base.call(this, this.targetChunkName, this.targetChunkName + '.js');
 }
+
+ChunkWebpackPlugin.prototype = Object.create(base.prototype);
 
 function apply(compiler) {
 	var self = this; // i lost my lambdas ;_;
@@ -55,13 +61,15 @@ function apply(compiler) {
 			tools.insertModulesIntoChunk(targetChunk, takenModules);
 		});
 	});
+
+	base.prototype.apply.apply(this, arguments);
 }
 
-Object.defineProperty(VendorWebpackPlugin.prototype, 'apply', {
+Object.defineProperty(ChunkWebpackPlugin.prototype, 'apply', {
 	value: apply,
 	enumerable: false
 });
 
-module.exports = VendorWebpackPlugin;
+module.exports = ChunkWebpackPlugin;
 
 // note: this code could be so much shorter with ES6...
