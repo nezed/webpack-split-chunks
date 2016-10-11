@@ -12,12 +12,11 @@ Example webpack config:
 
 ```javascript
 const webpack = require('webpack');
-const ChunkPlugin = require('../chunk-webpack-plugin');
+const ChunkPlugin = require('chunk-webpack-plugin');
 
 module.exports = {
     entry: {
         bundle: './src/main.js',
-        vendor: []
     },
     output: {
         path: './dist/',
