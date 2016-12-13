@@ -1,54 +1,107 @@
-# chunk webpack plugin
+# webpack split chunks plugin
 
-## What does it do?
+This plugin transfers modules whose absolute path matches your condition from a list of chunks into a single
+target chunk.
 
-This plugin transfers modules whose absolute path matches a regular expression from a list of chunks into a single
-target chunk. 
-Coupled with other plugins – especially with webpack's built-in `CommonsChunkPlugin `– this can be quite useful.
+### Benefits
+
+Using this on external bundles can increase dev re-builds performance and optimize clients browser cache in production, because it includes a lot of modules that you have no intention of changing.
 
 ## Usage
-
-Example webpack config:
-
-```javascript
+```js
+// webpack.config.js
 const webpack = require('webpack');
-const ChunkPlugin = require('chunk-webpack-plugin');
+const ChunksPlugin = require('webpack-split-chunks');
 
 module.exports = {
     entry: {
-        bundle: './src/main.js',
+        bundle: './src',
     },
     output: {
-        path: './dist/',
-        filename: 'bundle.js'
+        path: './build'
     },
     plugins: [
-        new ChunkPlugin({
-            from: 'bundle', // or an array of strings
+        new ChunksPlugin({
             to: 'vendor',
             test: /node_modules/ // or an array of regex
-        }),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
+        })
     ]
 };
 ```
-
 With this configuration all the modules that were `require`'d in the `bundle` chunk whose **absolute path** contains the
 substring `"node_modules"` would be instead added to the `vendor` chunk – and not into the `bundle` chunk where they
 would otherwise be.
 
-### But why?
+### API
+```js
+new ChunksPlugin( options )
+```
 
-Using this on external bundles can greatly increase re-build performance for the `bundle` chunk, especially if it
-includes a lot of modules that you have no intention of changing.
+**options**: `Object` (required)
+* **from**: `string | Array[string]` (optional)<br/>
+    Specifies name(s) of chunks which will be processed.
+    If omitted, all chunks will be processed.
+    > Note: omit this param if you want `webpack-split-chunks` to process your AMD-defined chunks
 
-### Note
+* **to**: `string` (required)<br/>
+    The name of target chunk.
 
-The issue with using only the `CommonsChunkPlugin` plugin to achieve this behavior is that it requires that you keep 
-an explicit list of modules that you want to be transferred into the the target bundle.  
-This plugin tries to solve that problem by matching module paths against regular expressions and transferring the
-matched modules to the target chunk (in the case of the configuration about it's the `vendor` chunk) before the
-`CommonsChunkPlugin` has a chance to run, but still letting it do its magic.
+* **test**: `function | RegExp | Array[RegExp]` (required)<br/>
+    The chunks whose **absolute path** meets any of regexp will be moved to target chunk.
+
+    You can provide your own tester function, every module will be applied to it.
+
+    Arguments:
+    * **resource**: `string`<br/>
+    The absolute path to module
+
+    * **module**: `Object`<br/>
+    Webpack's [`Module`](https://github.com/webpack/webpack/blob/master/lib/Module.js) object with module meta-info
+
+
+#### Examples
+```js
+    new ChunksPlugin({
+        to: 'vendor',
+        test: /node_modules|bower_components/
+//        or
+        test: [/node_modules/, /bower_components/]
+    })
+```
+
+**Move to `large-chunk.js` all modules bigger than `10KB`**
+```js
+    new ChunksPlugin({
+        to: 'large-chunk',
+        test(path, module) {
+            const source = module._source && module._source._value
+            if(source) {
+                const size = Buffer.byteLength(module._source._value)
+                return size > 10 * 1024 * 8
+            }
+        }
+    })
+```
+
+```js
+module.exports = {
+    entry: {
+        portal: './src',
+        admin: './src/admin',
+        app: './src/app'
+    },
+    output: {
+        path: './build'
+    },
+    plugins: [
+        new ChunksPlugin({
+            from: ['portal', 'admin']
+            to: 'vendor',
+            test: /node_modules/ // or an array of regex
+        })
+    ]
+};
+```
 
 ## License
 

@@ -1,16 +1,28 @@
 {
-  "name": "chunk-webpack-plugin",
-  "version": "0.1.8",
-  "description": "Moves select modules into target chunk",
+  "name": "webpack-split-chunks",
+  "version": "0.1.0",
+  "description": "Improving build speed and giving more control over chunk splitting",
   "main": "chunk-webpack-plugin.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/levp/chunk-webpack-plugin.git"
+    "url": "git+https://github.com/nezed/webpack-split-chunks.git"
   },
   "bugs": {
-    "url": "https://github.com/levp/chunk-webpack-plugin/issues"
+    "url": "https://github.com/nezed/webpack-split-chunks/issues"
   },
-  "homepage": "https://github.com/levp/chunk-webpack-plugin#readme",
-  "author": "levp",
-  "license": "ISC"
+  "homepage": "https://github.com/nezed/webpack-split-chunks#readme",
+  "author": "nezed <nezed@ya.ru>",
+  "contributors": [
+      "nezed <nezed@ya.ru>",
+      "levp <levi2p@gmail.com>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^1.14.0"
+  },
+  "keywords": [
+    "webpack", "build", "speed", "performance",
+    "manage", "control", "chunk", "chunks", "size",
+    "split"
+  ]
 }
