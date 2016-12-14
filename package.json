@@ -1,6 +1,6 @@
 {
   "name": "webpack-split-chunks",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Improving build speed and giving more control over chunk splitting",
   "main": "chunk-webpack-plugin.js",
   "repository": {
@@ -13,16 +13,23 @@
   "homepage": "https://github.com/nezed/webpack-split-chunks#readme",
   "author": "nezed <nezed@ya.ru>",
   "contributors": [
-      "nezed <nezed@ya.ru>",
-      "levp <levi2p@gmail.com>"
+    "nezed <nezed@ya.ru>",
+    "levp <levi2p@gmail.com>"
   ],
   "license": "ISC",
   "devDependencies": {
     "webpack": "^1.14.0"
   },
   "keywords": [
-    "webpack", "build", "speed", "performance",
-    "manage", "control", "chunk", "chunks", "size",
+    "webpack",
+    "build",
+    "speed",
+    "performance",
+    "manage",
+    "control",
+    "chunk",
+    "chunks",
+    "size",
     "split"
   ]
 }
