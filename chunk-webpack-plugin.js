@@ -39,7 +39,7 @@ function ChunkWebpackPlugin(options) {
 		throw new Error('The name of the target ("to") chunk cannot also be in the "from" chunk name list.');
 	}
 
-	base.call(this, this.targetChunkName, this.targetChunkName + '.js');
+	base.call(this, { name: this.targetChunkName, filename: this.targetChunkName + '.js' });
 }
 
 ChunkWebpackPlugin.prototype = Object.create(base.prototype);
