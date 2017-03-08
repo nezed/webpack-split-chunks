@@ -50,12 +50,14 @@ new ChunksPlugin(options)
 * **to**: `string` (required)<br/>
     The name of target chunk.
 
-* **test**: `function | RegExp | Array[RegExp]` (required)<br/>
+* **test**: `Function | RegExp | Array[RegExp]` (required)<br/>
     The chunks whose **absolute path** meets any of regexp will be moved to target chunk.
 
     You can provide your own tester function, every module will be applied to it.
-
-    Arguments:
+    ```
+      test: (resource, module) => boolean
+    ```
+    Where:
     * **resource**: `string`<br/>
     The absolute path to module
 
