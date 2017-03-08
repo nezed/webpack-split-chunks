@@ -1,2 +1,3 @@
 *
-!**/*.js
+!lib/**/*.js
+!chunk-webpack-plugin.js
