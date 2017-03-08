@@ -3,6 +3,10 @@
   "version": "0.1.1",
   "description": "Improving build speed and giving more control over chunk splitting",
   "main": "chunk-webpack-plugin.js",
+  "scripts": {
+    "test": "jasmine",
+    "postversion": "git push && git push --tags"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nezed/webpack-split-chunks.git"
@@ -18,7 +22,12 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "jasmine": "^2.5.3",
+    "memory-fs": "^0.4.1",
     "webpack": "^2.2.1"
+  },
+  "peerDependencies": {
+    "webpack": "^1.5.0 || ^2.0.0"
   },
   "keywords": [
     "webpack",
