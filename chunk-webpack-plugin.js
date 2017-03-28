@@ -42,6 +42,7 @@ class ChunkWebpackPlugin extends CommonsChunkPlugin {
     super({ name: targetChunkName });
     this.targetChunkName = targetChunkName;
     this.fromChunkNameList = fromChunkNameList;
+    this.minChunks = Infinity;
     this.testers = testers;
   }
 
