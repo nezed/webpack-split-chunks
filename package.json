@@ -1,6 +1,6 @@
 {
   "name": "webpack-split-chunks",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Improving build speed and giving more control over chunk splitting",
   "main": "chunk-webpack-plugin.js",
   "scripts": {
